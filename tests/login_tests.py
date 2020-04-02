@@ -1,6 +1,7 @@
 from utilities.base_test import BaseTest
 from utilities.loggers import log_message
 from objects.login_page import LoginPage
+from utilities import constants
 
 
 class LoginTests(BaseTest):
@@ -8,17 +9,30 @@ class LoginTests(BaseTest):
         super().setUp()
         self.login_page = LoginPage(self.driver)
 
-    def test_login(self):
-        log_message("Test case that tries to log in.")
+    def test_success_login(self):
+        log_message("Success login.")
 
         self.login_page.navigate_to_page()
         self.login_page.login_link.click()
 
-        self.login_page.login_input_field.send_keys("TiersTiers")
-
-        self.login_page.password_input_field.send_keys("LoopTest123")
+        self.login_page.login_input_field.send_keys(constants.TEST_VALID_USERNAME)
+        self.login_page.password_input_field.send_keys(constants.TEST_VALID_PASSWORD)
 
         self.login_page.submit_button.click()
         self.login_page.save_screenshot("Log_in_process")
 
         self.assertTrue(self.login_page.navigation_profile_button)
+
+    def test_failed_login(self):
+        log_message("Failed login.")
+
+        self.login_page.navigate_to_page()
+        self.login_page.login_link.click()
+
+        self.login_page.password_input_field.send_keys(constants.TEST_INVALID_PASSWORD)
+        self.login_page.submit_button.click()
+        username_error_label = self.login_page.validation_message
+
+        self.login_page.save_screenshot("Log_in_process")
+
+        self.assertTrue(username_error_label.text == "Username or E-mail is required!")

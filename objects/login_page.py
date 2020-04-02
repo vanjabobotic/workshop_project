@@ -7,9 +7,19 @@ class LoginPage(BasePage):
     slug = ""
     login_link_locator = (By.XPATH, "//a[@class='css-5rd2ea']")
     login_input_field_locator = (By.CSS_SELECTOR, "[data-testid=login-username-field]")
-    password_input_field_locator = (By.CSS_SELECTOR, "[data-testid=login-password-field]")
+    password_input_field_locator = (
+        By.CSS_SELECTOR,
+        "[data-testid=login-password-field]",
+    )
     submit_button_locator = (By.CSS_SELECTOR, "[data-testid=login-submit-button]")
-    navigation_profile_locator = (By.CSS_SELECTOR, "[data-testid=main-navigation-profile]")
+    navigation_profile_locator = (
+        By.CSS_SELECTOR,
+        "[data-testid=main-navigation-profile]",
+    )
+    validation_message_locator = (
+        By.CSS_SELECTOR,
+        "[data-testid=login-username-field-label]",
+    )
 
     def navigate_to_page(self):
         self.navigate(self.slug)
@@ -34,3 +44,6 @@ class LoginPage(BasePage):
     def navigation_profile_button(self):
         return self.get_present_element(self.navigation_profile_locator)
 
+    @property
+    def validation_message(self):
+        return self.get_visible_element(self.validation_message_locator)

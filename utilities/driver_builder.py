@@ -10,13 +10,13 @@ def build_driver():
 
     if browser == "chrome":
         chrome_options = Options()
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(options=chrome_options)
         driver.maximize_window()
 
     elif browser == "chrome-headless":
         chrome_options = Options()
         chrome_options.add_argument("--headless")
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(options=chrome_options)
 
     elif browser == "firefox":
         driver = webdriver.Firefox(log_path=os.devnull)

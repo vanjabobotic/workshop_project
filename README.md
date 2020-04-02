@@ -80,5 +80,3 @@ All test methods need to be prefixed with `test_` in order to be automatically d
 - See `circleci/config.yml`.
 - The default config runs all tests on every push and nightly.
 - It runs the following command: `python3 runner.py --browser=chrome --report`.
-
-Jeeeej, imamo Part 2 prezu.
