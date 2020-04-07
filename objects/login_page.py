@@ -16,7 +16,7 @@ class LoginPage(BasePage):
         By.CSS_SELECTOR,
         "[data-testid=main-navigation-profile]",
     )
-    validation_message_locator = (
+    username_validation_message_locator = (
         By.CSS_SELECTOR,
         "[data-testid=login-username-field-label]",
     )
@@ -45,5 +45,5 @@ class LoginPage(BasePage):
         return self.get_present_element(self.navigation_profile_locator)
 
     @property
-    def validation_message(self):
-        return self.get_visible_element(self.validation_message_locator)
+    def username_validation_message(self):
+        return self.get_visible_element(self.username_validation_message_locator)
