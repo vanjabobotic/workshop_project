@@ -17,15 +17,16 @@ class CartTests(BaseTest):
 
         self.shop_page.navigate_to_page()
 
-        # self.login_page.login_link.click()
-        # self.login_page.login_input_field.send_keys(constants.TEST_VALID_USERNAME)
-        # self.login_page.password_input_field.send_keys(constants.TEST_VALID_PASSWORD)
-        # self.login_page.submit_button.click()
-
         self.shop_page.products_main_navigation.click()
         self.shop_page.products_main_navigation.click()
         self.shop_page.shop_main_navigation.click()
 
         self.shop_page.physical_product.click()
+        self.product_details_page.choose_color.click()
+        self.product_details_page.choose_dropdown_value.click()
+        self.product_details_page.choose_size_dropdown.click()
+        self.product_details_page.choose_dropdown_value.click()
+        self.product_details_page.add_to_cart_button.click()
 
-        self.assertTrue(self.product_details_page.choose_color)
+        self.product_details_page.wait_for_alert_snackbar()
+        self.assertTrue(self.product_details_page.alert_snackbar)
