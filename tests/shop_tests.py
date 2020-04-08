@@ -28,5 +28,4 @@ class CartTests(BaseTest):
         self.product_details_page.choose_dropdown_value.click()
         self.product_details_page.add_to_cart_button.click()
 
-        self.product_details_page.wait_for_alert_snackbar()
         self.assertTrue(self.product_details_page.alert_snackbar)
