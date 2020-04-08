@@ -15,10 +15,7 @@ class ProductDetailsPage(BasePage):
     )
     choose_dropdown_element_locator = (By.CSS_SELECTOR, "[role='option']")
     choose_size_locator = (By.CSS_SELECTOR, "[data-testid=product-page-select-size]")
-    add_to_cart_button_locator = (
-        By.CSS_SELECTOR,
-        "[data-testid=product-page-button-add-to-cart]",
-    )
+    add_to_cart_button_locator = (By.CSS_SELECTOR, "[data-testid=product-page-button-add-to-cart]")
     alert_locator = (By.CSS_SELECTOR, "[role='alert']")
 
     @property
