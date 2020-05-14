@@ -20,6 +20,15 @@ class LoginPage(BasePage):
         By.CSS_SELECTOR,
         "[data-testid=login-username-field-label]",
     )
+    password_validation_message_locator = (
+        By.CSS_SELECTOR,
+        "[data-testid=login-password-field-label]",
+    )
+    
+    navigation_username_locator = (
+            By.CSS_SELECTOR,
+            "[data-testid=main-navigation-profile-dropdown-profile]",
+        )
 
     def navigate_to_page(self):
         self.navigate(self.slug)
@@ -45,5 +54,13 @@ class LoginPage(BasePage):
         return self.get_present_element(self.navigation_profile_locator)
 
     @property
+    def navigation_profile_button_username(self):
+        return self.get_present_element(self.navigation_username_locator)
+
+    @property
     def username_validation_message(self):
         return self.get_visible_element(self.username_validation_message_locator)
+
+    @property
+    def password_validation_message(self):
+        return self.get_visible_element(self.password_validation_message_locator)
